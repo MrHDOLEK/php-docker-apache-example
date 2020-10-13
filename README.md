@@ -20,3 +20,12 @@
 * PHP version:`7.4`
 * MySQL version: `8.0.16`
 * PHPmyadmin version `4.8`
+
+### If you run into problems
+### Try
+``bash
+  sudo systemctl restart docker
+  export COMPOSE_HTTP_TIMEOUT=120
+  export DOCKER_CLIENT_TIMEOUT=120
+  docker-compose up 
+```
