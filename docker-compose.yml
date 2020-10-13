@@ -1,0 +1,39 @@
+version: "3.1"
+services:
+    www:
+        image: 7.4-apache
+        build: .
+        ports:
+            - "8001:80"
+        volumes:
+            - ./www:/var/www/html/
+        links:
+            - db
+        networks: 
+            - default
+    db:
+        image: mysql:8.0.16
+        command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci','--default-authentication-plugin=mysql_native_password']
+        ports:
+            - "3308:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: test_db
+        networks: 
+            - default
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:4.8
+        links:
+            - db:db
+        ports:
+            - 8000:80
+        depends_on: 
+            - db
+        networks: 
+            - default
+        environment:
+            PMA_HOST: db
+            PMA_USER: root
+            PMA_PASSWORD: root
+volumes:
+    persistent:
