@@ -23,7 +23,8 @@
 
 ### If you run into problems
 ### Try
-``bash
+```bash
+  docker-compose down
   sudo systemctl restart docker
   export COMPOSE_HTTP_TIMEOUT=120
   export DOCKER_CLIENT_TIMEOUT=120
