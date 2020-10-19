@@ -20,7 +20,13 @@
 * PHP version:`7.4`
 * MySQL version: `8.0.16`
 * PHPmyadmin version `4.8`
-
+#### Optional
+```bash
+  db:
+  ...
+  volumes:
+      - ./db:/var/lib/mysql
+```
 ### If you run into problems
 ### Try
 ```bash
